@@ -1,9 +1,23 @@
+import cosas.*
 import camion.*
 
 describe "group of test for camion" {
 
-  test "first test" {
-    assert.that(true)
+
+  test "camion con bumblebee" {
+    camion.cargar(bumblebee)
+    assert.equals(1800, camion.peso())
+  }
+
+  test "arena de granel con 150 kilos" {
+    camion.cargar(arenaGranel)
+    arenaGranel.cambiarPeso(150)
+    assert.equals(1150, camion.peso())
   }
 
 }
+
+/*Por otro lado, armar un test del camión, cargado con lo siguiente: bumblebee como robot,
+ la arena a granel con 150 kilos, la batería antiaérea con los misiles puestos, y el embalaje de seguridad poniéndole como contenido el paquete de ladrillos con 80 ladrillos.
+Para cada método, calcular qué resultado tiene que dar, y hacer el test correspondiente.
+Esto va en camionTest.wtest.*/

@@ -2,8 +2,43 @@ import cosas.*
 
 describe "group of test for cosas" {
 
-  test "first test" {
-    assert.that(true)
+  test "contenedor" {
+    contenedorPortuario.anadir(bumblebee)
+    assert.equals(900, contenedorPortuario.peso())
+
   }
 
+  test "bateria" {
+    bateriaAntiaerea.cambiarEstadoMisiles()
+    assert.equals(200, bateriaAntiaerea.peso())
+  }
+
+  test "ladrillos" {
+    ladrillos.cambiarCantidad(10)
+    assert.equals(20, ladrillos.peso())
+  }
+
+  test "embalaje" {
+    embalaje.anadir(bumblebee)
+    bumblebee.transformar()
+    assert.equals(15, embalaje.peligrosidad())
+  }
+
+  test "embalaje2" {
+    embalaje.anadir(residuos)
+    assert.equals(15, embalaje.peligrosidad())
+  }
+
+  test "contenedor2" {
+    contenedorPortuario.anadir(bumblebee)
+    contenedorPortuario.anadir(ladrillos)
+    contenedorPortuario.anadir(residuos)
+    assert.equals(residuos, contenedorPortuario.peligrosidad())
+  }
 }
+
+
+/*
+Hay que hacer un pequeño test para cada una de las siguientes cosas: paquete de ladrillos, batería antiaérea, contenedor portuario y embalaje de seguridad.
+ Al embalaje ponerle adentro los residuos radioactivos con 30 kg de peso. Al contenedor, dos o tres cosas a elección. Todo esto en un archivo cosasTest.wtest.
+*/

@@ -1,12 +1,14 @@
+
+
 object camion {
     var maxPeligrosidad = 10
-    var pesoCarga = 100
     var carga = []
+    method pesoCarga() = carga.sum({c => c.peso()})
     method cargarYDescargar(unaCosa,otraCosa){
         carga.add(unaCosa)
         carga.remove(otraCosa)
     }
-    method peso() = 1000 + pesoCarga
+    method peso() = 1000 + self.pesoCarga()
     method cargaPesoEsPar() = carga.all({c => c.peso().even()})
     method algunoPesa(unPeso) = carga.any({c => c.peso() == unPeso})
     method primeroConNivelDePeligro(unNivel) = carga.filter({p => p.peligrosidad() > unNivel}).first()
@@ -16,7 +18,7 @@ object camion {
     method ningunElementoSupera(unNivel) = carga.all({c => c.peligrosidad() < unNivel})
     method puedeCircular() = not self.esPesoExcedido() && self.ningunElementoSupera(maxPeligrosidad)
 
-
+    method cargar(unObjeto) = carga.add(unObjeto)
 
 }
 
