@@ -1,0 +1,37 @@
+
+
+import camion2.*
+import cosas2.*
+
+test "cargar bublebee" {
+  camion.cargar(bumblebee)
+  assert.equals(2, bumblebee.bulto())
+}
+
+test "cargar ladrillos" {
+  camion.cargar(ladrillos)
+  ladrillos.cambiarCantidad(200)
+  assert.equals(2, ladrillos.bulto())
+}
+
+test "cargar contenedorPortuario" {
+  contenedorPortuario.anadir(bumblebee)
+  contenedorPortuario.anadir(ladrillos)
+  camion.cargar(contenedorPortuario)
+  assert.equals(4, contenedorPortuario.bulto())
+  //assert.equals(true, bumblebee.esRobot())
+  //assert.equals(1, ladrillos.bulto())
+
+}
+
+test "al cargar bumblebee" {
+  camion.cargar(bumblebee)
+  assert.equals(true,bumblebee.esRobot())
+}
+
+
+test "al cargar arena granel" {
+  camion.cargar(arenaGranel)
+  assert.equals(10, arenaGranel.peso())
+}
+
